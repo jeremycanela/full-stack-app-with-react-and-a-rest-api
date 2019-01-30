@@ -227,9 +227,7 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
     error: {
       errors: {
-        invalid: {
-          message: err.message
-        }
+        message: err.message
       }
     }
   });

@@ -119,7 +119,7 @@ class App extends Component {
                 <Route exact path="/signup" render={() => this.state.loggedIn ? <Redirect to="/" /> : <UserSignUp user={this.state.user.fullName} signin={this.signin.bind(this)} loggedIn={this.state.loggedIn} />} />
                 <Route exact path="/signin" render={props => <UserSignIn user={this.state.user.fullName} signin={this.signin.bind(this)} loggedIn={this.state.loggedIn} errors={this.state.errors} redirect={this.state.redirect} {...props} />} />
                 <Route exact path="/signout" render={() => <UserSignOut signout={this.signout.bind(this)} />} />
-                <Route exact path="/courses/create" render={() => <CreateCourse user={this.state.user.fullName} loggedIn={this.state.loggedIn} emailAddress={this.state.user.emailAddress} password={this.state.user.password} />} />
+                <Route exact path="/courses/create" render={props => <CreateCourse user={this.state.user.fullName} loggedIn={this.state.loggedIn} emailAddress={this.state.user.emailAddress} password={this.state.user.password} {...props} />} />
                 <Route exact path="/courses/:id" render={props => <CourseDetail user={this.state.user.fullName} loggedIn={this.state.loggedIn} {...props} userId={this.state.user.userId} emailAddress={this.state.user.emailAddress} password={this.state.user.password} />} />
                 <Route exact path="/courses/:id/update" render={props => <UpdateCourse user={this.state.user.fullName} loggedIn={this.state.loggedIn} {...props} userId={this.state.user.userId} emailAddress={this.state.user.emailAddress} password={this.state.user.password} />} />
                 <Route exact path="/forbidden" render={() => <Forbidden user={this.state.user.fullName} loggedIn={this.state.loggedIn} />} />

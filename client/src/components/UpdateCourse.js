@@ -90,12 +90,10 @@ class UpdateCourse extends Component {
 				},
 				data: this.state.editcourse
 			}).then(course => {
-				console.dir(course);
 				this.setState({
 					redirect: true
 				});
 			}).catch(err => {
-				console.dir(err);
 				const error = err.response.data.error.errors;
 				for(let i = 0; i < Object.keys(error).length; i++) {
 					errors.push(error[Object.keys(error)[i]].message);
