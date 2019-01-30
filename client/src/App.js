@@ -90,7 +90,6 @@ class App extends Component {
 
         this.setState({redirect: true});
       }).catch(err => {
-        console.dir(err);
         const error = err.response.data;
         errors.push(error);
 

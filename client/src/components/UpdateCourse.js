@@ -94,7 +94,13 @@ class UpdateCourse extends Component {
 					redirect: true
 				});
 			}).catch(err => {
-				const error = err.response.data.error.errors;
+				let error;
+				if(Object.keys(err.response.data.error.errors)[0] === "message") {
+					error = err.response.data.error;
+				} else {
+					error = err.response.data.error.errors;
+				}
+				
 				for(let i = 0; i < Object.keys(error).length; i++) {
 					errors.push(error[Object.keys(error)[i]].message);
 				}
