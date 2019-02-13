@@ -14,11 +14,13 @@ class Courses extends Component {
 	};
 
 	componentDidMount() {
-		axios.get("http://localhost:5000/api/courses")
+		axios.get("https://project-rest-api.herokuapp.com/api/courses")
 		.then(courses => {
 			this.setState({
 				courses: courses.data
 			});
+
+			this.props.loaded(true);
 		});
 	};
 
@@ -36,7 +38,7 @@ class Courses extends Component {
 	render() {
 		return (
 			<div className="bounds">
-		        
+		        {!this.props.loading ? <p>Loading...</p> : null}
 		        {
 		        	this.state.courses.map(course => {
 		        		return <Course key={course._id} title={course.title} id={course._id} />;
